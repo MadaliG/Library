@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.cell.*?> 
+<?import javafx.collections.*?> 
+<?import java.net.URL?>
+<!--<?import bookly.*?>--> 
+<!--<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>-->
+
+<GridPane alignment="CENTER" hgap="10.0" vgap="10.0" stylesheets="@styling.css"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="bookly.BooklyController">
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding> 
+    <Label style="-fx-font: NORMAL 20 Tahoma;" text="Biblioteca Bookly"                
+           GridPane.columnIndex="0" GridPane.rowIndex="0">
+    </Label>
+    <TableView fx:id="tableView" GridPane.columnIndex="0" 
+               editable="true" GridPane.rowIndex="2">
+        <columns>
+            <TableColumn  fx:id="firstNameColumn" text="Prenume" prefWidth="150">
+                <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>
+            </TableColumn>
+            <TableColumn fx:id="lastNameColumn" text="Nume" prefWidth="150">
+                <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>
+            </TableColumn>
+            <TableColumn fx:id="titleColumn" text="Titlu" prefWidth="200">
+<!--                <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>-->
+            </TableColumn>
+            <TableColumn fx:id="categoryColumn" text="Categorie" prefWidth="100">
+                <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>
+            </TableColumn>
+            <TableColumn fx:id="locationColumn" text="Locatie" prefWidth="100">
+                <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>
+                <!--                <cellFactory>
+                    <FormattedTableCellFactory alignment="center">
+                    </FormattedTableCellFactory>
+                </cellFactory>-->
+            </TableColumn>
+            <!--            <TableColumn fx:id="bookIdColumn" text="Id" prefWidth="50">
+                 <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>
+            </TableColumn>-->
+        </columns>  
+        <columnResizePolicy>
+            <!--it shows error, but it works perfecty fine - bug from netbeans-->
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+        </columnResizePolicy> 
+        <!--        <sortOrder>
+            <fx:reference source="lastNameColumn"/>
+        </sortOrder> -->
+    </TableView>
+    <HBox spacing="10" alignment="bottom_right" GridPane.columnIndex="0" 
+          GridPane.rowIndex="3">
+        <TextField fx:id="firstNameField" promptText="Prenume"
+                   prefWidth="150"/>
+        <TextField fx:id="lastNameField" promptText="Nume"
+                   prefWidth="150"/>
+        <TextField fx:id="titleField" promptText="Titlu"
+                   prefWidth="200"/>
+        <TextField fx:id="categoryField" promptText="Categorie"
+                   prefWidth="100"/>
+        <TextField fx:id="locationField" promptText="Locatie"
+                   prefWidth="100"/>
+<!--        <TextField fx:id="bookIdField" promptText="Id"
+                   prefWidth="50"/>-->
+        <Button text="Adauga" onAction="#addBook"/>
+        <Button text="Sterge" onAction="#deleteBook"/>
+    </HBox> 
+    <HBox id="HBox" spacing="10" alignment="top_right" GridPane.columnIndex="0" 
+          GridPane.rowIndex="1">
+        <children>
+            <Label text="Filtreaza tabelul: " />
+            <TextField fx:id="filterField" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
+            <Button text="Export PDF" onAction="#exportTable"/>
+        </children>
+    </HBox>
+    <!--     <stylesheets>
+       <URL value="@styling.css" />
+    </stylesheets>-->
+</GridPane>
